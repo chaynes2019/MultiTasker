@@ -1,5 +1,7 @@
 goals = dict()
 
+from Goal import Goal
+
 with open("Goals.csv", 'r') as f:
     lines = f.readlines()
     
@@ -30,3 +32,14 @@ with open("Goals.csv", 'r') as f:
         goals[goalName] = goalDict
     
     print(goals)
+
+for goalKey in goals.keys():
+    goal = goals[goalKey]
+
+    goalObject = Goal(goal['Start Date'], 
+    goal['End Date'],
+    int(goal['Expected Hours Required']),
+    int(goal['Hours Put Into It So Far']),
+    int(goal['Hours Last Week']))
+    
+    print(f"\"{goal['Name']}\", Average Time Per Week = {goalObject.computeHoursPerWeek()}")
