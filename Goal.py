@@ -59,9 +59,13 @@ class Goal():
         
 
         '''
-        5. Return that value.
+        5. Return that value. If start date of goal has not yet come,
+        recommend setting aside one hour to start the goal.
         '''
-        return timePerWeek
+        if (self.start_date > date.fromtimestamp(time.time())):
+            return 1
+        else:
+            return timePerWeek
 
 
         
